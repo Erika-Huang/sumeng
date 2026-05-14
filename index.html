@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄苏梦 | AI赋能型新媒体运营</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Rosé Pine Dawn Theme - Light Colors */
+        :root {
+            --base: #faf4ed;
+            --surface: #fffaf3;
+            --overlay: #f2e9de;
+            --text: #575279;
+            --muted: #9893a5;
+            --subtle: #797593;
+            --love: #b4637a;
+            --gold: #ea9d34;
+            --rose: #d7827e;
+            --pine: #286983;
+            --foam: #56949f;
+            --iris: #907aa9;
+            --highlight-low: #f4ede8;
+            --highlight-med: #dfdad8;
+            --highlight-high: #cecacd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--base);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Main Container - Two Column Layout */
+        .main-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            gap: 3rem;
+        }
+
+        /* Left Sidebar - Fixed */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+
+        .sidebar-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--overlay);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Avatar */
+        .avatar-wrapper {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--overlay);
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        /* Name & Title */
+        .profile-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .profile-title {
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--love);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .profile-tagline {
+            font-size: 0.85rem;
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact List */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+            transition: color 0.2s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--text);
+        }
+
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--love);
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Tags */
+        .tags-section {
+            margin-top: 1.5rem;
+        }
+
+        .tags-title {
+            font-size: 0.75rem;
+            color: var(--subtle);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.6rem;
+            background: var(--overlay);
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--iris);
+        }
+
+        /* Right Content - Scrollable */
+        .content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::before {
+            content: '//';
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--love);
+            font-size: 0.9rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--overlay);
+            margin-bottom: 1rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .card:hover {
+            border-color: var(--highlight-med);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Experience */
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .experience-company {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--iris);
+        }
+
+        .experience-role {
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-top: 0.2rem;
+        }
+
+        .experience-date {
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--subtle);
+            background: var(--overlay);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .experience-points {
+            list-style: none;
+        }
+
+        .experience-points li {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .experience-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--pine);
+            font-size: 0.75rem;
+        }
+
+        .highlight {
+            color: var(--love);
+            font-weight: 500;
+        }
+
+        /* Portfolio Tabs */
+        .portfolio-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-tab {
+            padding: 0.5rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--overlay);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        .portfolio-tab:hover,
+        .portfolio-tab.active {
+            background: var(--overlay);
+            color: var(--text);
+            border-color: var(--love);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Photo Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+        }
+
+        .photo-item {
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--overlay);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid var(--overlay);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--love);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+        }
+            display: block;
+        }
+
+        /* Project Section */
+        .project-section {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--overlay);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--iris);
+        }
+
+        .project-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        /* Carousel */
+        .carousel-wrapper {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .carousel-row {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .carousel-row.vertical .carousel-item {
+            width: 180px;
+            flex-shrink: 0;
+        }
+
+        .carousel-row.horizontal .carousel-item {
+            width: 60%;
+            flex-shrink: 0;
+        }
+
+        .carousel-item {
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--overlay);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--overlay);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .carousel-item:hover {
+            border-color: var(--love);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .carousel-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--surface);
+            border: 1px solid var(--overlay);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--muted);
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        .carousel-btn:hover {
+            background: var(--overlay);
+            color: var(--text);
+            border-color: var(--love);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .carousel-btn.prev {
+            animation: floatLeft 2s ease-in-out infinite;
+        }
+
+        .carousel-btn.next {
+            animation: floatRight 2s ease-in-out infinite;
+        }
+
+        @keyframes floatLeft {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-2px) translateY(-4px); }
+        }
+
+        @keyframes floatRight {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(2px) translateY(-4px); }
+        }
+
+        .carousel-counter {
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--subtle);
+        }
+
+        /* Sub Tabs */
+        .sub-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .sub-tab {
+            padding: 0.4rem 0.8rem;
+            background: var(--surface);
+            border: 1px solid var(--overlay);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sub-tab:hover,
+        .sub-tab.active {
+            background: var(--overlay);
+            color: var(--pine);
+            border-color: var(--pine);
+        }
+
+        /* Awards */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .award-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--overlay);
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        .award-item:hover {
+            border-color: var(--iris);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .award-icon {
+            font-size: 1.2rem;
+        }
+
+        .award-text {
+            font-size: 0.85rem;
+        }
+
+        .award-title {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .award-desc {
+            color: var(--muted);
+            font-size: 0.75rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .skill-group {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid var(--overlay);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        .skill-group-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--pine);
+            margin-bottom: 0.6rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .skill-tag {
+            padding: 0.25rem 0.5rem;
+            background: var(--overlay);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--iris);
+        }
+
+        /* Course Card */
+        .course-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--overlay);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        .course-card:hover {
+            border-color: var(--gold);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .course-cover {
+            width: 80px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        .course-info h4 {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+
+        .course-info p {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
+        .course-link {
+            color: var(--gold);
+            font-size: 0.75rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--subtle);
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(250, 244, 237, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 12px;
+            border: 2px solid var(--love);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -1rem;
+            right: -1rem;
+            width: 40px;
+            height: 40px;
+            background: var(--surface);
+            border: 1px solid var(--overlay);
+            border-radius: 50%;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        }
+
+        .modal-close:hover {
+            background: var(--love);
+            border-color: var(--love);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+
+            .sidebar-card {
+                padding: 1.5rem;
+            }
+
+            .avatar-wrapper {
+                width: 120px;
+                height: 120px;
+            }
+
+            .photo-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .carousel-row.vertical .carousel-item {
+                width: 160px;
+            }
+
+            .carousel-row.horizontal .carousel-item {
+                width: 70%;
+            }
+
+            .awards-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .carousel-row.vertical .carousel-item {
+                width: 140px;
+            }
+
+            .carousel-row.horizontal .carousel-item {
+                width: 80%;
+            }
+
+            .photo-item img {
+                max-height: 250px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .sidebar {
+                position: relative;
+            }
+
+            .modal {
+                display: none !important;
+            }
+
+            .photo-grid,
+            .project-section,
+            .carousel-nav {
+                break-inside: avoid;
+            }
+        }
+
+        /* Content visibility toggle */
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        .sub-content {
+            display: none;
+        }
+
+        .sub-content.active {
+            display: block;
+        }
+
+        .sub2-content {
+            display: none;
+        }
+
+        .sub2-content.active {
+            display: block;
+        }
+
+        /* Fade animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <div class="avatar-wrapper">
+                    <img class="avatar" src="photo/avatar/e0f4b28c-a1e0-4680-a628-75acd0452109(1).png" alt="头像">
+                </div>
+                <h1 class="profile-name">黄苏梦</h1>
+                <p class="profile-title">AI赋能型新媒体运营</p>
+                <p class="profile-tagline">中共党员 · 本科 · 成都</p>
+
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <a href="mailto:suiic@qq.com">suiic@qq.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <span>19140532951</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <span>成都</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z"/></svg>
+                        <span>四川大学锦江学院</span>
+                    </div>
+                </div>
+
+                <div class="tags-section">
+                    <div class="tags-title">核心能力</div>
+                    <div class="tags-list">
+                        <span class="tag">IP冷启动</span>
+                        <span class="tag">数据驱动</span>
+                        <span class="tag">AI提效</span>
+                        <span class="tag">爆款复制</span>
+                    </div>
+                </div>
+
+                <div class="tags-section">
+                    <div class="tags-title">平台运营</div>
+                    <div class="tags-list">
+                        <span class="tag">小红书</span>
+                        <span class="tag">抖音</span>
+                        <span class="tag">视频号</span>
+                        <span class="tag">闲鱼</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Content -->
+        <main class="content">
+            <!-- About Section -->
+            <section class="section fade-in">
+                <h2 class="section-title">关于我</h2>
+                <div class="card">
+                    <p style="color: var(--muted); font-size: 0.9rem;">
+                        擅长<span class="highlight">小红书/视频号/抖音IP冷启动</span>与全链路运营，跑通"高客单价线下引流+轻量电商"变现模型。
+                        熟练使用<span class="highlight">Claude Code</span>独立开发运营提效工具，重构工作流实现内容产能翻倍。
+                        结合AI工作流进行爆款拆解，沉淀可复用SOP，持续提升爆款率与ROI。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section fade-in">
+                <h2 class="section-title">工作经历</h2>
+
+                <div class="card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-company">瀚海（福建泉州）科技有限公司</div>
+                            <div class="experience-role">IP增长运营</div>
+                        </div>
+                        <span class="experience-date">2025.12 - 2026.4</span>
+                    </div>
+                    <ul class="experience-points">
+                        <li><span class="highlight">0到1攻坚</span>视频号冷启动，单条视频获<span class="highlight">370+</span>转发，引流<span class="highlight">50+</span>高净值客户，单条变现<span class="highlight">3万+</span></li>
+                        <li>AI赋能爆款拆解，制作耗时从<span class="highlight">6h→3h</span>，打造抖音<span class="highlight">13W+</span>曝光双爆款</li>
+                        <li>搭建"闲鱼获客+小红书转化"链路，峰值<span class="highlight">500+</span>咨询，<span class="highlight">20天GMV破万</span></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-company">晋江市陈埭镇劲佳面料纺织厂</div>
+                            <div class="experience-role">用户内容运营</div>
+                        </div>
+                        <span class="experience-date">2024.05 - 2025.11</span>
+                    </div>
+                    <ul class="experience-points">
+                        <li>B端需求洞察，转化<span class="highlight">10家</span>核心客户，跑通"需求-内容-转化"闭环</li>
+                        <li>搭建飞书多维表客户管理，<span class="highlight">30+</span>客户标签化，响应效率翻倍</li>
+                        <li>从0搭建标准化素材库，支撑长期内容获客</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section class="section fade-in">
+                <h2 class="section-title">作品集</h2>
+
+                <div class="portfolio-tabs">
+                    <button class="portfolio-tab active" data-category="operation">运营成果</button>
+                    <button class="portfolio-tab" data-category="project">项目展示</button>
+                    <button class="portfolio-tab" data-category="content">内容创作</button>
+                </div>
+
+                <!-- 运营成果 -->
+                <div class="category-content active" id="category-operation">
+                    <div class="sub-tabs">
+                        <button class="sub-tab active" data-sub="douyin">抖音</button>
+                        <button class="sub-tab" data-sub="shipinhao">视频号</button>
+                        <button class="sub-tab" data-sub="xianyu">闲鱼</button>
+                    </div>
+
+                    <div class="sub-content active" id="sub-douyin">
+                        <div class="photo-grid">
+                            <div class="photo-item" onclick="openModal('photo/douyin/one/b6ee9de12bd2193de0f89403a115f0ea.png')">
+                                <img src="photo/douyin/one/b6ee9de12bd2193de0f89403a115f0ea.png" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/douyin/traffic/1.png')">
+                                <img src="photo/douyin/traffic/1.png" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/douyin/traffic/2.png')">
+                                <img src="photo/douyin/traffic/2.png" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/douyin/traffic/3.png')">
+                                <img src="photo/douyin/traffic/3.png" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/douyin/traffic/4.png')">
+                                <img src="photo/douyin/traffic/4.png" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/douyin/traffic/5.png')">
+                                <img src="photo/douyin/traffic/5.png" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/douyin/traffic/6.png')">
+                                <img src="photo/douyin/traffic/6.png" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/douyin/traffic/7.png')">
+                                <img src="photo/douyin/traffic/7.png" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sub-content" id="sub-shipinhao">
+                        <div class="sub-tabs level-2">
+                            <button class="sub-tab active" data-sub2="yuhuayu">玉华语门店</button>
+                            <button class="sub-tab" data-sub2="adan">阿丹主理人</button>
+                            <button class="sub-tab" data-sub2="huajie">老板IP</button>
+                        </div>
+                        <div class="sub2-content active" id="sub2-yuhuayu">
+                            <div class="photo-grid">
+                                <div class="photo-item" onclick="openModal('photo/shipinhao/yuhuayu/1.jpg')">
+                                    <img src="photo/shipinhao/yuhuayu/1.jpg" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/shipinhao/yuhuayu/2.jpg')">
+                                    <img src="photo/shipinhao/yuhuayu/2.jpg" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/shipinhao/yuhuayu/3.jpg')">
+                                    <img src="photo/shipinhao/yuhuayu/3.jpg" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/shipinhao/yuhuayu/4.jpg')">
+                                    <img src="photo/shipinhao/yuhuayu/4.jpg" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub2-content" id="sub2-adan">
+                            <div class="photo-grid">
+                                <div class="photo-item" onclick="openModal('photo/shipinhao/adan/1.jpg')">
+                                    <img src="photo/shipinhao/adan/1.jpg" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/shipinhao/adan/2.jpg')">
+                                    <img src="photo/shipinhao/adan/2.jpg" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/shipinhao/adan/3.jpg')">
+                                    <img src="photo/shipinhao/adan/3.jpg" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/shipinhao/adan/4.jpg')">
+                                    <img src="photo/shipinhao/adan/4.jpg" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub2-content" id="sub2-huajie">
+                            <div class="photo-grid">
+                                <div class="photo-item" onclick="openModal('photo/shipinhao/huajie/1.jpg')">
+                                    <img src="photo/shipinhao/huajie/1.jpg" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/shipinhao/huajie/2.jpg')">
+                                    <img src="photo/shipinhao/huajie/2.jpg" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sub-content" id="sub-xianyu">
+                        <div class="sub-tabs level-2">
+                            <button class="sub-tab active" data-sub2="xianyu-one">单页内容</button>
+                            <button class="sub-tab" data-sub2="xianyu-more">咨询量</button>
+                        </div>
+                        <div class="sub2-content active" id="sub2-xianyu-one">
+                            <div class="photo-grid">
+                                <div class="photo-item" onclick="openModal('photo/xianyu/one/1.png')">
+                                    <img src="photo/xianyu/one/1.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/one/2.png')">
+                                    <img src="photo/xianyu/one/2.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/one/3.png')">
+                                    <img src="photo/xianyu/one/3.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/one/4.png')">
+                                    <img src="photo/xianyu/one/4.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/one/5.png')">
+                                    <img src="photo/xianyu/one/5.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/one/6.png')">
+                                    <img src="photo/xianyu/one/6.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/one/7.png')">
+                                    <img src="photo/xianyu/one/7.png" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub2-content" id="sub2-xianyu-more">
+                            <div class="photo-grid">
+                                <div class="photo-item" onclick="openModal('photo/xianyu/more/1.png')">
+                                    <img src="photo/xianyu/more/1.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/more/2.png')">
+                                    <img src="photo/xianyu/more/2.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/more/3.png')">
+                                    <img src="photo/xianyu/more/3.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/more/4.png')">
+                                    <img src="photo/xianyu/more/4.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/more/5.png')">
+                                    <img src="photo/xianyu/more/5.png" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/xianyu/more/6.png')">
+                                    <img src="photo/xianyu/more/6.png" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目展示 -->
+                <div class="category-content" id="category-project">
+                    <div class="project-section">
+                        <div class="project-name">Cake 蛋糕小程序</div>
+                        <div class="project-desc">蛋糕订购小程序，支持在线选购、预约配送</div>
+                        <div class="carousel-wrapper" id="carousel-cake"></div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn prev" onclick="prevProjectSlide('cake')">←</button>
+                            <span class="carousel-counter" id="counter-cake">1 / 3</span>
+                            <button class="carousel-btn next" onclick="nextProjectSlide('cake')">→</button>
+                        </div>
+                    </div>
+
+                    <div class="project-section">
+                        <div class="project-name">CloLink 链接收藏</div>
+                        <div class="project-desc">飞书AI链接收藏机器人，多平台元数据自动抓取</div>
+                        <div class="carousel-wrapper" id="carousel-CloLink"></div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn prev" onclick="prevProjectSlide('CloLink')">←</button>
+                            <span class="carousel-counter" id="counter-CloLink">1 / 2</span>
+                            <button class="carousel-btn next" onclick="nextProjectSlide('CloLink')">→</button>
+                        </div>
+                    </div>
+
+                    <div class="project-section">
+                        <div class="project-name">E-Reader 智能阅读器</div>
+                        <div class="project-desc">桌面智能电子书阅读器，支持多级标注</div>
+                        <div class="carousel-wrapper" id="carousel-E-reader"></div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn prev" onclick="prevProjectSlide('E-reader')">←</button>
+                            <span class="carousel-counter" id="counter-E-reader">1 / 4</span>
+                            <button class="carousel-btn next" onclick="nextProjectSlide('E-reader')">→</button>
+                        </div>
+                    </div>
+
+                    <div class="project-section">
+                        <div class="project-name">OpenClaw 飞书机器人</div>
+                        <div class="project-desc">使用OpenClaw连接飞书，实现自动化机器人</div>
+                        <div class="carousel-wrapper" id="carousel-openClaw"></div>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn prev" onclick="prevProjectSlide('openClaw')">←</button>
+                            <span class="carousel-counter" id="counter-openClaw">1 / 1</span>
+                            <button class="carousel-btn next" onclick="nextProjectSlide('openClaw')">→</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 内容创作 -->
+                <div class="category-content" id="category-content">
+                    <div class="sub-tabs">
+                        <button class="sub-tab active" data-sub="course">教程</button>
+                        <button class="sub-tab" data-sub="essay">随笔</button>
+                        <button class="sub-tab" data-sub="photograph">摄影</button>
+                    </div>
+
+                    <div class="sub-content active" id="sub-course">
+                        <a href="https://juejin.cn/post/7244174211971203127" target="_blank" class="course-card">
+                            <img class="course-cover" src="photo/course/微信图片_20260513205958_463_93.jpg" alt="教程">
+                            <div class="course-info">
+                                <h4>稀土掘金技术教程</h4>
+                                <p>分享AI工具使用与新媒体运营经验</p>
+                                <span class="course-link">点击前往阅读 →</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="sub-content" id="sub-essay">
+                        <div class="photo-grid">
+                            <div class="photo-item" onclick="openModal('photo/essay/微信图片_20260513205158_407_93.jpg')">
+                                <img src="photo/essay/微信图片_20260513205158_407_93.jpg" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/essay/微信图片_20260513205158_408_93.jpg')">
+                                <img src="photo/essay/微信图片_20260513205158_408_93.jpg" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/essay/微信图片_20260513205159_409_93.jpg')">
+                                <img src="photo/essay/微信图片_20260513205159_409_93.jpg" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/essay/微信图片_20260513205201_410_93.jpg')">
+                                <img src="photo/essay/微信图片_20260513205201_410_93.jpg" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/essay/微信图片_20260513205202_411_93.jpg')">
+                                <img src="photo/essay/微信图片_20260513205202_411_93.jpg" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/essay/微信图片_20260513205203_412_93.jpg')">
+                                <img src="photo/essay/微信图片_20260513205203_412_93.jpg" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/essay/微信图片_20260513205203_413_93.jpg')">
+                                <img src="photo/essay/微信图片_20260513205203_413_93.jpg" loading="lazy">
+                            </div>
+                            <div class="photo-item" onclick="openModal('photo/essay/微信图片_20260513205204_414_93.jpg')">
+                                <img src="photo/essay/微信图片_20260513205204_414_93.jpg" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sub-content" id="sub-photograph">
+                        <div class="sub-tabs level-2">
+                            <button class="sub-tab active" data-sub2="people">人像</button>
+                            <button class="sub-tab" data-sub2="scenery">风景</button>
+                            <button class="sub-tab" data-sub2="yuzhuo">玉镯</button>
+                        </div>
+                        <div class="sub2-content active" id="sub2-people">
+                            <div class="carousel-wrapper" id="carousel-people"></div>
+                            <div class="carousel-nav">
+                                <button class="carousel-btn prev" onclick="prevPhotoSlide('people')">←</button>
+                                <span class="carousel-counter" id="counter-people">1 / 5</span>
+                                <button class="carousel-btn next" onclick="nextPhotoSlide('people')">→</button>
+                            </div>
+                        </div>
+                        <div class="sub2-content" id="sub2-scenery">
+                            <div class="photo-grid">
+                                <div class="photo-item" onclick="openModal('photo/photograph/scenery/微信图片_20260513205213_422_93.jpg')">
+                                    <img src="photo/photograph/scenery/微信图片_20260513205213_422_93.jpg" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/photograph/scenery/微信图片_20260513205222_430_93.jpg')">
+                                    <img src="photo/photograph/scenery/微信图片_20260513205222_430_93.jpg" loading="lazy">
+                                </div>
+                                <div class="photo-item" onclick="openModal('photo/photograph/scenery/微信图片_20260513205223_431_93.jpg')">
+                                    <img src="photo/photograph/scenery/微信图片_20260513205223_431_93.jpg" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub2-content" id="sub2-yuzhuo">
+                            <div class="carousel-wrapper" id="carousel-yuzhuo"></div>
+                            <div class="carousel-nav">
+                                <button class="carousel-btn prev" onclick="prevPhotoSlide('yuzhuo')">←</button>
+                                <span class="carousel-counter" id="counter-yuzhuo">1 / 4</span>
+                                <button class="carousel-btn next" onclick="nextPhotoSlide('yuzhuo')">→</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section fade-in">
+                <h2 class="section-title">技能</h2>
+                <div class="skills-grid">
+                    <div class="skill-group">
+                        <div class="skill-group-title">运营能力</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">小红书运营</span>
+                            <span class="skill-tag">视频号运营</span>
+                            <span class="skill-tag">抖音运营</span>
+                            <span class="skill-tag">IP冷启动</span>
+                            <span class="skill-tag">私域流量</span>
+                            <span class="skill-tag">数据分析</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-group-title">内容制作</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">短视频策划</span>
+                            <span class="skill-tag">脚本撰写</span>
+                            <span class="skill-tag">PR剪辑</span>
+                            <span class="skill-tag">剪映</span>
+                            <span class="skill-tag">爆款拆解</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-group-title">AI工具</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Claude Code</span>
+                            <span class="skill-tag">AI工作流</span>
+                            <span class="skill-tag">提示词工程</span>
+                            <span class="skill-tag">飞书机器人</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-group-title">其他</div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">飞书多维表</span>
+                            <span class="skill-tag">商务对接</span>
+                            <span class="skill-tag">项目管理</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Awards Section -->
+            <section class="section fade-in">
+                <h2 class="section-title">荣誉奖项</h2>
+                <div class="awards-grid">
+                    <div class="award-item">
+                        <span class="award-icon">🏆</span>
+                        <div class="award-text">
+                            <div class="award-title">美国大学生数学建模竞赛 国家级三等奖</div>
+                            <div class="award-desc">多源数据整合与建模分析</div>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">🚀</span>
+                        <div class="award-text">
+                            <div class="award-title">字节跳动青训营前端班 二等奖</div>
+                            <div class="award-desc">产品落地与前端工程化</div>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">🤖</span>
+                        <div class="award-text">
+                            <div class="award-title">讯飞杯编程大赛 三等奖</div>
+                            <div class="award-desc">产品落地思维</div>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">💻</span>
+                        <div class="award-text">
+                            <div class="award-title">蓝桥杯软件测试 省级一等奖</div>
+                            <div class="award-desc">数据驱动与问题定位</div>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">💡</span>
+                        <div class="award-text">
+                            <div class="award-title">"互联网＋"创新创业大赛 省级铜奖</div>
+                            <div class="award-desc">商务对接与资源整合</div>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-icon">✍️</span>
+                        <div class="award-text">
+                            <div class="award-title">晋江签约作者</div>
+                            <div class="award-desc">内容创作能力认证</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                © 2026 黄苏梦 · last update: May 2026
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <img id="modalImage" src="" alt="预览">
+        </div>
+    </div>
+
+    <script>
+        // Project Images Data
+        const projectImages = {
+            cake: {
+                vertical: [
+                    'photo/project/cake/微信图片_20260513205534_444_93.jpg',
+                    'photo/project/cake/微信图片_20260513205535_445_93.jpg',
+                    'photo/project/cake/微信图片_20260513205536_446_93.jpg',
+                    'photo/project/cake/微信图片_20260513205537_447_93.jpg',
+                    'photo/project/cake/微信图片_20260513205538_448_93.jpg',
+                    'photo/project/cake/微信图片_20260513205539_449_93.jpg',
+                    'photo/project/cake/微信图片_20260513205540_450_93.jpg'
+                ],
+                horizontal: []
+            },
+            CloLink: {
+                vertical: [
+                    'photo/project/CloLink/vertical/微信图片_20260513205732_455_93.jpg',
+                    'photo/project/CloLink/vertical/微信图片_20260513205735_458_93.jpg',
+                    'photo/project/CloLink/vertical/微信图片_20260513205737_459_93.jpg'
+                ],
+                horizontal: [
+                    'photo/project/CloLink/horizontal/微信图片_20260513205733_456_93.jpg',
+                    'photo/project/CloLink/horizontal/微信图片_20260513205734_457_93.jpg'
+                ]
+            },
+            'E-reader': {
+                vertical: [
+                    'photo/project/E-reader/vertical/微信图片_20260513205642_454_93.jpg'
+                ],
+                horizontal: [
+                    'photo/project/E-reader/horizontal/微信图片_20260513205639_451_93.jpg',
+                    'photo/project/E-reader/horizontal/微信图片_20260513205640_452_93.jpg',
+                    'photo/project/E-reader/horizontal/微信图片_20260513205641_453_93.jpg'
+                ]
+            },
+            openClaw: {
+                vertical: [
+                    'photo/project/openClaw/微信图片_20260513205837_460_93.jpg',
+                    'photo/project/openClaw/微信图片_20260513205838_461_93.jpg'
+                ],
+                horizontal: []
+            }
+        };
+
+        const pageSize = { vertical: 3, horizontal: 1 };
+        const projectPageIndex = { cake: { total: 0 }, CloLink: { total: 0 }, 'E-reader': { total: 0 }, openClaw: { total: 0 } };
+
+        function getTotalPages(name) {
+            const vPages = Math.ceil(projectImages[name].vertical.length / pageSize.vertical);
+            return vPages + projectImages[name].horizontal.length;
+        }
+
+        function renderProjectCarousel(name) {
+            const container = document.getElementById(`carousel-${name}`);
+            if (!container) return;
+
+            const vImages = projectImages[name].vertical;
+            const hImages = projectImages[name].horizontal;
+            const vPages = Math.ceil(vImages.length / pageSize.vertical);
+            const totalPages = vPages + hImages.length;
+            let page = (projectPageIndex[name].total || 0) % totalPages;
+
+            let html = '';
+            if (page < vPages && vImages.length > 0) {
+                const start = page * pageSize.vertical;
+                const end = Math.min(start + pageSize.vertical, vImages.length);
+                html += `<div class="carousel-row vertical">`;
+                vImages.slice(start, end).forEach(img => {
+                    html += `<div class="carousel-item" onclick="openModal('${img}')"><img src="${img}" loading="lazy"></div>`;
+                });
+                html += `</div>`;
+            } else if (hImages.length > 0) {
+                const idx = page - vPages;
+                if (idx >= 0 && idx < hImages.length) {
+                    html += `<div class="carousel-row horizontal">`;
+                    html += `<div class="carousel-item" onclick="openModal('${hImages[idx]}')"><img src="${hImages[idx]}" loading="lazy"></div>`;
+                    html += `</div>`;
+                }
+            }
+
+            container.innerHTML = html;
+            document.getElementById(`counter-${name}`).textContent = `${page + 1} / ${totalPages}`;
+        }
+
+        function prevProjectSlide(name) {
+            const totalPages = getTotalPages(name);
+            projectPageIndex[name].total = ((projectPageIndex[name].total || 0) - 1 + totalPages) % totalPages;
+            renderProjectCarousel(name);
+        }
+
+        function nextProjectSlide(name) {
+            const totalPages = getTotalPages(name);
+            projectPageIndex[name].total = ((projectPageIndex[name].total || 0) + 1) % totalPages;
+            renderProjectCarousel(name);
+        }
+
+        // Tab switching
+        document.querySelectorAll('.portfolio-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.portfolio-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                document.querySelectorAll('.category-content').forEach(c => c.classList.remove('active'));
+                document.getElementById(`category-${tab.dataset.category}`).classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.sub-tab[data-sub]').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const parent = tab.closest('.category-content');
+                parent.querySelectorAll('.sub-tab[data-sub]').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                parent.querySelectorAll('.sub-content').forEach(c => c.classList.remove('active'));
+                document.getElementById(`sub-${tab.dataset.sub}`).classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.sub-tab[data-sub2]').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const parent = tab.closest('.sub-content');
+                parent.querySelectorAll('.sub-tab[data-sub2]').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                parent.querySelectorAll('.sub2-content').forEach(c => c.classList.remove('active'));
+                document.getElementById(`sub2-${tab.dataset.sub2}`).classList.add('active');
+            });
+        });
+
+        // Modal
+        function openModal(src) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('imageModal').addEventListener('click', e => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Photography Images Data
+        const photoImages = {
+            people: {
+                vertical: [
+                    'photo/photograph/people/vertical/微信图片_20260513205214_423_93.jpg',
+                    'photo/photograph/people/vertical/微信图片_20260513205215_424_93.jpg',
+                    'photo/photograph/people/vertical/微信图片_20260513205227_433_93.jpg',
+                    'photo/photograph/people/vertical/微信图片_20260513205228_434_93.jpg',
+                    'photo/photograph/people/vertical/微信图片_20260513205229_435_93.jpg',
+                    'photo/photograph/people/vertical/微信图片_20260513205230_436_93.jpg'
+                ],
+                horizontal: [
+                    'photo/photograph/people/horizontal/微信图片_20260513205211_420_93.jpg',
+                    'photo/photograph/people/horizontal/微信图片_20260513205212_421_93.jpg',
+                    'photo/photograph/people/horizontal/微信图片_20260513205216_425_93.jpg',
+                    'photo/photograph/people/horizontal/微信图片_20260513205218_426_93.jpg',
+                    'photo/photograph/people/horizontal/微信图片_20260513205220_428_93.jpg',
+                    'photo/photograph/people/horizontal/微信图片_20260513205221_429_93.jpg',
+                    'photo/photograph/people/horizontal/微信图片_20260513205224_432_93.jpg'
+                ]
+            },
+            yuzhuo: {
+                vertical: [
+                    'photo/photograph/yuzhuo/vertical/微信图片_20260513205445_439_93.jpg',
+                    'photo/photograph/yuzhuo/vertical/微信图片_20260513205446_440_93.jpg',
+                    'photo/photograph/yuzhuo/vertical/微信图片_20260513205447_441_93.jpg',
+                    'photo/photograph/yuzhuo/vertical/微信图片_20260513205448_442_93.jpg',
+                    'photo/photograph/yuzhuo/vertical/微信图片_20260513205449_443_93.jpg'
+                ],
+                horizontal: [
+                    'photo/photograph/yuzhuo/horizontal/微信图片_20260513205443_437_93.jpg',
+                    'photo/photograph/yuzhuo/horizontal/微信图片_20260513205444_438_93.jpg'
+                ]
+            }
+        };
+
+        const photoPageIndex = { people: { total: 0 }, yuzhuo: { total: 0 } };
+
+        function getTotalPhotoPages(name) {
+            const vPages = Math.ceil(photoImages[name].vertical.length / pageSize.vertical);
+            return vPages + photoImages[name].horizontal.length;
+        }
+
+        function renderPhotoCarousel(name) {
+            const container = document.getElementById(`carousel-${name}`);
+            if (!container) return;
+
+            const vImages = photoImages[name].vertical;
+            const hImages = photoImages[name].horizontal;
+            const vPages = Math.ceil(vImages.length / pageSize.vertical);
+            const totalPages = vPages + hImages.length;
+            let page = (photoPageIndex[name].total || 0) % totalPages;
+
+            let html = '';
+            if (page < vPages && vImages.length > 0) {
+                const start = page * pageSize.vertical;
+                const end = Math.min(start + pageSize.vertical, vImages.length);
+                html += `<div class="carousel-row vertical">`;
+                vImages.slice(start, end).forEach(img => {
+                    html += `<div class="carousel-item" onclick="openModal('${img}')"><img src="${img}" loading="lazy"></div>`;
+                });
+                html += `</div>`;
+            } else if (hImages.length > 0) {
+                const idx = page - vPages;
+                if (idx >= 0 && idx < hImages.length) {
+                    html += `<div class="carousel-row horizontal">`;
+                    html += `<div class="carousel-item" onclick="openModal('${hImages[idx]}')"><img src="${hImages[idx]}" loading="lazy"></div>`;
+                    html += `</div>`;
+                }
+            }
+
+            container.innerHTML = html;
+            document.getElementById(`counter-${name}`).textContent = `${page + 1} / ${totalPages}`;
+        }
+
+        function prevPhotoSlide(name) {
+            const totalPages = getTotalPhotoPages(name);
+            photoPageIndex[name].total = ((photoPageIndex[name].total || 0) - 1 + totalPages) % totalPages;
+            renderPhotoCarousel(name);
+        }
+
+        function nextPhotoSlide(name) {
+            const totalPages = getTotalPhotoPages(name);
+            photoPageIndex[name].total = ((photoPageIndex[name].total || 0) + 1) % totalPages;
+            renderPhotoCarousel(name);
+        }
+
+        // Init
+        function init() {
+            Object.keys(projectImages).forEach(name => renderProjectCarousel(name));
+            Object.keys(photoImages).forEach(name => renderPhotoCarousel(name));
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

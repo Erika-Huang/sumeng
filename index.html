@@ -796,9 +796,632 @@
                 transform: translateY(0);
             }
         }
+
+        /* ========== 页面切换样式 ========== */
+        .page-switcher {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border-bottom: 1px solid var(--overlay);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .switch-btn {
+            padding: 0.5rem 1.5rem;
+            background: var(--base);
+            border: 1px solid var(--overlay);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .switch-btn:hover,
+        .switch-btn.active {
+            background: var(--overlay);
+            color: var(--text);
+            border-color: var(--love);
+        }
+
+        .page-content {
+            display: none;
+            padding-top: 60px;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        /* ========== 策划案专用样式 ========== */
+        .plan-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 3rem;
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .plan-title {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-meta {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .plan-section {
+            margin-bottom: 2rem;
+        }
+
+        .plan-section-title {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .plan-section-title::before {
+            content: '//';
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--love);
+            font-size: 0.9rem;
+        }
+
+        .plan-subsection-title {
+            font-size: 0.95rem;
+            color: var(--iris);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .plan-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--overlay);
+            margin-bottom: 1rem;
+        }
+
+        .plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+
+        .plan-table th,
+        .plan-table td {
+            padding: 0.75rem;
+            border: 1px solid var(--overlay);
+            text-align: left;
+        }
+
+        .plan-table th {
+            background: var(--overlay);
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .plan-warning {
+            background: rgba(180, 99, 122, 0.1);
+            border: 1px solid var(--love);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .plan-warning-title {
+            font-weight: 600;
+            color: var(--love);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .plan-list li {
+            padding: 0.3rem 0;
+            color: var(--muted);
+        }
+
+        .plan-highlight {
+            color: var(--love);
+            font-weight: 600;
+        }
+
+        .plan-code {
+            background: var(--overlay);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--pine);
+            margin: 1rem 0;
+            white-space: pre-wrap;
+        }
+
+        /* 公式框样式 */
+        .formula-box {
+            background: var(--surface);
+            border: 1px solid var(--overlay);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .formula-title {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .formula-step {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0.5rem 0;
+        }
+
+        .formula-result {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--overlay);
+        }
+
+        .formula-note {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+
+        /* 核心指标突出卡片 */
+        .key-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid var(--overlay);
+            transition: all 0.2s ease;
+        }
+
+        .metric-card:hover {
+            border-color: var(--love);
+            transform: translateY(-2px);
+        }
+
+        .metric-card.highlight {
+            border-color: var(--love);
+            background: rgba(180, 99, 122, 0.08);
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--love);
+        }
+
+        .metric-card.highlight .metric-value {
+            font-size: 2.5rem;
+        }
+
+        .metric-unit {
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
+        .metric-compare {
+            font-size: 0.7rem;
+            color: var(--pine);
+            margin-top: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            background: rgba(40, 105, 131, 0.1);
+            border-radius: 4px;
+        }
+
+        /* 目标进度条 */
+        .goal-progress {
+            margin: 1rem 0;
+        }
+
+        .progress-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .progress-label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            min-width: 80px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 24px;
+            background: var(--overlay);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--pine), var(--love));
+            border-radius: 12px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-value {
+            font-size: 0.85rem;
+            color: var(--text);
+            font-weight: 600;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        /* ROI突出框 */
+        .roi-highlight {
+            background: linear-gradient(135deg, rgba(180, 99, 122, 0.1), rgba(234, 157, 52, 0.1));
+            border: 2px solid var(--love);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .roi-title {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .roi-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--love);
+        }
+
+        .roi-desc {
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .key-metrics {
+                grid-template-columns: 1fr;
+            }
+            .metric-value {
+                font-size: 1.5rem;
+            }
+            .metric-card.highlight .metric-value {
+                font-size: 2rem;
+            }
+        }
+
+        /* 流程图样式 */
+        .formula-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            background: var(--overlay);
+            border: 2px solid var(--pine);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .flow-time {
+            background: var(--pine);
+            color: var(--base);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .flow-title {
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .flow-content span {
+            background: var(--base);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .flow-arrow {
+            color: var(--love);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* 转化路径简化流程图 */
+        .conversion-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            background: var(--overlay);
+            border-radius: 12px;
+        }
+
+        .flow-step-simple {
+            background: var(--surface);
+            border: 1px solid var(--muted);
+            border-radius: 8px;
+            padding: 0.5rem 0.8rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
+        .flow-step-simple span {
+            display: block;
+            font-weight: 500;
+        }
+
+        .flow-step-simple small {
+            display: block;
+            color: var(--muted);
+            font-size: 0.7rem;
+            margin-top: 0.2rem;
+        }
+
+        .flow-step-simple.highlight {
+            border-color: var(--pine);
+            background: rgba(40, 105, 131, 0.1);
+        }
+
+        .flow-step-simple.highlight small {
+            color: var(--pine);
+        }
+
+        .flow-step-simple.success {
+            border-color: var(--love);
+            background: rgba(180, 99, 122, 0.15);
+            color: var(--love);
+        }
+
+        .flow-arrow-simple {
+            color: var(--love);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* 图表样式 */
+        .chart-container {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid var(--overlay);
+        }
+
+        .chart-title {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .chart-wrapper {
+            height: 250px;
+        }
+
+        .chart-calc {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--overlay);
+            border-radius: 8px;
+        }
+
+        .chart-calc-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .chart-calc p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0.3rem 0;
+        }
+
+        /* 选题卡片样式 */
+        .topic-card {
+            background: var(--surface);
+            border: 1px solid var(--overlay);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-number {
+            font-size: 0.75rem;
+            color: var(--muted);
+            background: var(--overlay);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .topic-title {
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .topic-content {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .topic-cta {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--pine);
+        }
+
+        /* 左侧目录样式 */
+        .plan-sidebar {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-620px);
+            top: 80px;
+            width: 200px;
+            max-height: calc(100vh - 100px);
+            background: var(--surface);
+            border: 1px solid var(--overlay);
+            border-radius: 12px;
+            padding: 1rem;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .plan-sidebar.active {
+            display: block;
+        }
+
+        .plan-nav-title {
+            font-weight: 600;
+            color: var(--text);
+            padding: 0.5rem 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--overlay);
+        }
+
+        .plan-nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .plan-nav-menu li {
+            padding: 0.6rem 0.75rem;
+            cursor: pointer;
+            color: var(--muted);
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            border-radius: 6px;
+            margin-bottom: 0.25rem;
+        }
+
+        .plan-nav-menu li:hover {
+            color: var(--text);
+            background: var(--overlay);
+        }
+
+        .plan-nav-menu li.active {
+            color: var(--love);
+            background: rgba(180, 99, 122, 0.1);
+        }
+
+        @media (max-width: 1200px) {
+            .plan-sidebar {
+                left: 10px;
+                transform: none;
+                width: 180px;
+            }
+            .plan-nav-menu li {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.6rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .plan-sidebar {
+                display: none !important;
+            }
+            .plan-container {
+                max-width: 100%;
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        .plan-footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 2px solid var(--overlay);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
     </style>
+<!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
+    <!-- Page Switcher -->
+    <div class="page-switcher">
+        <button class="switch-btn active" data-page="resume">个人简历</button>
+        <button class="switch-btn" data-page="plan">运营策划案</button>
+    </div>
+
+    <!-- ========== 个人简历页面 ========== -->
+    <div class="page-content active" id="page-resume">
     <div class="main-container">
         <!-- Left Sidebar -->
         <aside class="sidebar">
@@ -1286,6 +1909,43 @@
             </footer>
         </main>
     </div>
+    </div>
+
+    <!-- ========== 策划案页面 ========== -->
+    <div class="page-content" id="page-plan">
+        <!-- 左侧目录 -->
+        <nav class="plan-sidebar" id="planSidebar">
+            <div class="plan-nav-title">📑 目录导航</div>
+            <ul class="plan-nav-menu">
+                <li data-target="section1">一、方案摘要</li>
+                <li data-target="section2">二、行业与账号定位</li>
+                <li data-target="section3">三、目标人群画像</li>
+                <li data-target="section4">四、目标拆解与计算</li>
+                <li data-target="section5">五、阶段性目标</li>
+                <li data-target="section6">六、内容策略</li>
+                <li data-target="section7">七、线索广告投流</li>
+                <li data-target="section8">八、私域承接</li>
+                <li data-target="section9">九、数据监测</li>
+                <li data-target="section10">十、产出预估</li>
+                <li data-target="section11">十一、风险预判</li>
+                <li data-target="section12">十二、品牌特点</li>
+                <li data-target="section13">十三、方案结语</li>
+            </ul>
+        </nav>
+        <div class="plan-container">
+            <div class="plan-header">
+                <h1 class="plan-title">饭扫光抖音B端账号三个月运营策划案</h1>
+                <div class="plan-meta">
+                    <span>应聘人：黄苏梦</span> |
+                    <span>岗位：新媒体运营（线索广告方向）</span> |
+                    <span>提交日期：2026年5月</span>
+                </div>
+            </div>
+
+            <!-- 策划案内容将通过JavaScript加载 -->
+            <div id="plan-content"></div>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal" id="imageModal">
@@ -1533,6 +2193,1079 @@
         function init() {
             Object.keys(projectImages).forEach(name => renderProjectCarousel(name));
             Object.keys(photoImages).forEach(name => renderPhotoCarousel(name));
+        }
+
+        // ========== 页面切换逻辑 ==========
+        document.querySelectorAll('.switch-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 更新按钮状态
+                document.querySelectorAll('.switch-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // 切换页面内容
+                const page = btn.dataset.page;
+                document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+                document.getElementById(`page-${page}`).classList.add('active');
+
+                // 更新页面标题
+                document.title = page === 'resume' ? '黄苏梦 | AI赋能型新媒体运营' : '饭扫光抖音运营策划案';
+
+                // 策划案页面时显示目录和渲染图表
+                if (page === 'plan') {
+                    document.getElementById('planSidebar').classList.add('active');
+                    setTimeout(renderCharts, 100);
+                } else {
+                    document.getElementById('planSidebar').classList.remove('active');
+                }
+            });
+        });
+
+        // ========== 策划案内容 ==========
+        const planHTML = `
+            <!-- 一、方案摘要 -->
+            <div class="plan-section fade-in" id="section1">
+                <h2 class="plan-section-title">一、方案摘要</h2>
+
+                <!-- 核心指标突出展示 -->
+                <div class="key-metrics">
+                    <div class="metric-card">
+                        <div class="metric-label">公司当前基线</div>
+                        <div class="metric-value">180</div>
+                        <div class="metric-unit">个/月</div>
+                    </div>
+                    <div class="metric-card highlight">
+                        <div class="metric-label">🎯 目标</div>
+                        <div class="metric-value">300</div>
+                        <div class="metric-unit">个/月</div>
+                        <div class="metric-compare">第2月达标</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">成本控制目标</div>
+                        <div class="metric-value">20-40</div>
+                        <div class="metric-unit">元CPL</div>
+                        <div class="metric-compare">保持现有水平</div>
+                    </div>
+                </div>
+
+                <!-- 目标进度可视化 -->
+                <div class="plan-card">
+                    <h3 class="plan-subsection-title">📈 三个月目标进度</h3>
+                    <div class="goal-progress">
+                        <div class="progress-item">
+                            <div class="progress-label">第1月</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 69.4%"></div>
+                            </div>
+                            <div class="progress-value">250个</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">第2月</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 83.3%"></div>
+                            </div>
+                            <div class="progress-value">300个 ✓</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">第3月</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 97.2%"></div>
+                            </div>
+                            <div class="progress-value">350个</div>
+                        </div>
+                    </div>
+                    <p style="text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 1rem;">
+                        三个月累计：250 + 300 + 350 = <strong style="color: var(--love);">900个线索</strong>
+                    </p>
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-title">📊 提升幅度计算</div>
+                    <div class="formula-step">当前基线：180个/月</div>
+                    <div class="formula-step">承诺目标：300个/月</div>
+                    <div class="formula-step">需提升量：300 - 180 = <strong>120个</strong></div>
+                    <div class="formula-result">提升幅度：120 ÷ 180 = <strong style="color: var(--love);">66.7%</strong></div>
+                </div>
+
+                <!-- 线索增长目标折线图 -->
+                <div class="chart-container">
+                    <div class="chart-title">三个月月客资目标拆解</div>
+                    <div class="chart-wrapper">
+                        <canvas id="leadGrowthChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- CPL成本控制图表 -->
+                <div class="chart-container">
+                    <div class="chart-title">线索成本目标区间（保持现有水平）</div>
+                    <div class="chart-wrapper">
+                        <canvas id="cplChart"></canvas>
+                    </div>
+                    <div class="chart-calc">
+                        <div class="chart-calc-title">📊 CPL说明</div>
+                        <p>CPL（Cost Per Lead）= 广告消耗金额 ÷ 有效线索数量</p>
+                        <p>公司当前CPL范围：20-40元</p>
+                        <p style="border-top: 1px solid var(--overlay); margin-top: 0.5rem; padding-top: 0.5rem;">本方案目标：保持CPL在<strong style="color: var(--love);">30元左右</strong>，与公司现有水平持平</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 二、复合调味品行业与账号定位 -->
+            <div class="plan-section fade-in" id="section2">
+                <h2 class="plan-section-title">二、复合调味品行业与账号定位</h2>
+                <div class="plan-card">
+                    <h3 class="plan-subsection-title">2.1 复合调味品行业特点</h3>
+                    <p style="color: var(--muted); margin-bottom: 1rem;">
+                        <strong>行业定义</strong>：复合调味品是指将多种基础调味料按特定配方混合而成的成品调味料，如川菜调料包、火锅底料、炒菜酱等，可大幅简化烹饪流程、降低对厨师技术的依赖。
+                    </p>
+                    <table class="plan-table">
+                        <tr>
+                            <th>价值点</th>
+                            <th>具体表现</th>
+                            <th>餐饮老板关注程度</th>
+                        </tr>
+                        <tr>
+                            <td><strong>口味标准化</strong></td>
+                            <td>每次出品味道一致，不依赖厨师手感</td>
+                            <td>⭐⭐⭐⭐⭐ 极高</td>
+                        </tr>
+                        <tr>
+                            <td><strong>出餐效率提升</strong></td>
+                            <td>5分钟出餐 vs 传统15分钟</td>
+                            <td>⭐⭐⭐⭐⭐ 极高</td>
+                        </tr>
+                        <tr>
+                            <td><strong>降低人工成本</strong></td>
+                            <td>不需要高薪请川菜师傅</td>
+                            <td>⭐⭐⭐⭐ 高</td>
+                        </tr>
+                        <tr>
+                            <td><strong>供应链稳定</strong></td>
+                            <td>统一供应，不担心断货</td>
+                            <td>⭐⭐⭐⭐ 高</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="plan-card">
+                    <h3 class="plan-subsection-title">2.2 账号定位</h3>
+                    <p style="color: var(--muted);">
+                        <strong>定位逻辑</strong>：不做C端零售种草，专注B端餐饮解决方案——<span class="plan-highlight">口味标准化 + 出餐效率 + 降本增效</span>
+                    </p>
+                </div>
+
+                <div class="plan-card">
+                    <h3 class="plan-subsection-title">2.3 竞品分析与差异化策略</h3>
+                    <table class="plan-table">
+                        <tr>
+                            <th>竞品</th>
+                            <th>优势</th>
+                            <th>短板</th>
+                        </tr>
+                        <tr>
+                            <td><strong>老干妈</strong></td>
+                            <td>C端国民认知度拉满、全国家喻户晓</td>
+                            <td>极度依赖单一辣酱单品，<span class="plan-highlight">B端场景适配性弱</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>虎邦</strong></td>
+                            <td>网红属性突出，新媒体流量玩法成熟</td>
+                            <td>深耕C端零售赛道，<span class="plan-highlight">To B专业度不足</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>海天</strong></td>
+                            <td>家庭厨房渗透率行业第一</td>
+                            <td>主打单一调味品，<span class="plan-highlight">川味复合调料短板明显</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 三、目标人群画像与痛点分析 -->
+            <div class="plan-section fade-in" id="section3">
+                <h2 class="plan-section-title">三、目标人群画像与痛点分析</h2>
+
+                <h3 class="plan-subsection-title">3.1 核心人群画像</h3>
+                <table class="plan-table">
+                    <tr>
+                        <th>人群标签</th>
+                        <th>具体画像</th>
+                        <th>核心痛点</th>
+                        <th>决策特点</th>
+                    </tr>
+                    <tr>
+                        <td><strong>小型餐饮店老板</strong></td>
+                        <td>30-50岁，经营川味快餐/外卖，1-3家门店</td>
+                        <td>厨师难招且工资高、菜品口味不稳定</td>
+                        <td>价格敏感，决策周期短（1-3天）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>连锁餐饮采购</strong></td>
+                        <td>35-45岁，区域性连锁品牌采购经理</td>
+                        <td>供应链不稳定、口味标准化难题</td>
+                        <td>需要资质认证，决策周期长（7-15天）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>食堂/团餐采购</strong></td>
+                        <td>40-55岁，企业/学校/医院食堂负责人</td>
+                        <td>食品安全合规要求高、预算有限</td>
+                        <td>重视资质证明，决策周期中等</td>
+                    </tr>
+                    <tr>
+                        <td><strong>餐饮创业者</strong></td>
+                        <td>25-35岁，准备开小吃店/外卖店</td>
+                        <td>不懂烹饪技术、担心试错成本</td>
+                        <td>决策快，容易被低价吸引</td>
+                    </tr>
+                </table>
+
+                <h3 class="plan-subsection-title">3.2 痛点深度分析（选题灵感来源）</h3>
+                <div class="plan-card">
+                    <p><strong>痛点一：厨师依赖症</strong></p>
+                    <p style="color: var(--muted);">场景：小餐馆请一个川菜师傅月薪8000-10000元，一旦离职菜品质量就下降</p>
+                    <p style="color: var(--pine);">解决方案：复合调味品可标准化口味，降低对厨师技术的依赖</p>
+                </div>
+                <div class="plan-card">
+                    <p><strong>痛点二：口味不稳定导致客源流失</strong></p>
+                    <p style="color: var(--muted);">场景：今天做的鱼香肉丝好吃，明天做的味道就不一样，顾客投诉</p>
+                    <p style="color: var(--pine);">解决方案：复合调味品每次用量固定，出品一致性高</p>
+                </div>
+                <div class="plan-card">
+                    <p><strong>痛点三：出餐速度慢影响翻台率</strong></p>
+                    <p style="color: var(--muted);">场景：高峰期顾客排队，但厨房跟不上，导致顾客流失</p>
+                    <p style="color: var(--pine);">解决方案：复合调味品一料多用，简化烹饪流程</p>
+                </div>
+            </div>
+
+            <!-- 四、三个月目标拆解与计算说明 -->
+            <div class="plan-section fade-in" id="section4">
+                <h2 class="plan-section-title">四、三个月目标拆解与计算说明</h2>
+
+                <h3 class="plan-subsection-title">4.1 目标拆解</h3>
+                <div class="formula-box">
+                    <div class="formula-title">📊 三个月阶段目标</div>
+                    <div class="formula-step">第1月：250个（快速提升期，优化投放策略）</div>
+                    <div class="formula-step">第2月：300个（达到月客资目标）</div>
+                    <div class="formula-step">第3月：350个（超越目标，持续优化）</div>
+                    <div class="formula-result">三个月累计：250 + 300 + 350 = <strong style="color: var(--love);">900个</strong></div>
+                </div>
+
+                <div class="formula-box">
+                    <div class="formula-title">📊 第2月达标的计算依据</div>
+                    <div class="formula-step">当前基线：180个/月</div>
+                    <div class="formula-step">第1月目标：250个（比基线提升38.9%）</div>
+                    <div class="formula-step">第2月目标：300个（达到考核目标）</div>
+                    <div class="formula-result">增幅：300 - 180 = 120个，提升<strong style="color: var(--love);">66.7%</strong></div>
+                </div>
+
+                <h3 class="plan-subsection-title">4.2 预算与线索量计算</h3>
+                <div class="formula-box">
+                    <div class="formula-title">📊 预算计算</div>
+                    <div class="formula-step">第1月线索目标250个 → 预算 = 250 × 30 = <strong>7,500元</strong></div>
+                    <div class="formula-step">第2月线索目标300个 → 预算 = 300 × 30 = <strong>9,000元</strong></div>
+                    <div class="formula-step">第3月线索目标350个 → 预算 = 350 × 30 = <strong>10,500元</strong></div>
+                    <div class="formula-result">三个月广告预算合计：7,500 + 9,000 + 10,500 = <strong style="color: var(--love);">27,000元</strong></div>
+                </div>
+
+                <!-- 预算分配柱状图 -->
+                <div class="chart-container">
+                    <div class="chart-title">三个月预算与线索量规划</div>
+                    <div class="chart-wrapper">
+                        <canvas id="budgetChart"></canvas>
+                    </div>
+                </div>
+
+                <h3 class="plan-subsection-title">4.3 线索有效率计算</h3>
+                <div class="formula-box">
+                    <div class="formula-title">📊 有效线索率计算</div>
+                    <div class="formula-step">有效线索率 = 有效线索数量 ÷ 总线索数量 × 100%</div>
+                    <div class="formula-step">目标提升：第1月40% → 第2月42% → 第3月45%</div>
+                </div>
+                <div class="formula-box">
+                    <div class="formula-title">📊 有效线索数量计算</div>
+                    <div class="formula-step">第1月：250 × 40% = <strong>100个</strong>有效线索</div>
+                    <div class="formula-step">第2月：300 × 42% = <strong>126个</strong>有效线索</div>
+                    <div class="formula-step">第3月：350 × 45% = <strong>158个</strong>有效线索</div>
+                    <div class="formula-result">三个月累计有效线索：100 + 126 + 158 = <strong style="color: var(--love);">384个</strong></div>
+                </div>
+            </div>
+
+            <!-- 五、三个月阶段性目标与执行规划 -->
+            <div class="plan-section fade-in" id="section5">
+                <h2 class="plan-section-title">五、三个月阶段性目标与执行规划</h2>
+
+                <h3 class="plan-subsection-title">5.1 总体目标拆解</h3>
+                <table class="plan-table">
+                    <tr>
+                        <th>阶段</th>
+                        <th>时间</th>
+                        <th>核心目标</th>
+                        <th>关键指标</th>
+                    </tr>
+                    <tr>
+                        <td><strong>基建期</strong></td>
+                        <td>第1-4周</td>
+                        <td>账号定位完成，测试内容赛道，跑通线索收集模型</td>
+                        <td>发布视频30条，线索成本<40元，收集线索250+</td>
+                    </tr>
+                    <tr>
+                        <td><strong>放量期</strong></td>
+                        <td>第5-8周</td>
+                        <td>确定2条高转化内容赛道，加大投流，优化线索质量</td>
+                        <td>日更2条，线索成本<35元，有效线索率>50%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>稳定期</strong></td>
+                        <td>第9-12周</td>
+                        <td>建立私域承接体系，推动样品转化，形成可复制SOP</td>
+                        <td>线索成本<30元，样品申领率>30%，成交转化率>5%</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 六、内容策略 -->
+            <div class="plan-section fade-in" id="section6">
+                <h2 class="plan-section-title">六、内容策略：痛点驱动型创意公式</h2>
+
+                <h3 class="plan-subsection-title">6.1 核心创意公式</h3>
+                <div class="formula-flow">
+                    <div class="flow-step">
+                        <div class="flow-time">0-3秒</div>
+                        <div class="flow-title">痛点捕捉</div>
+                        <div class="flow-content">
+                            <span>视觉冲击</span>
+                            <span>具体金额</span>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-time">8-15秒</div>
+                        <div class="flow-title">解决方案</div>
+                        <div class="flow-content">
+                            <span>真实案例</span>
+                            <span>对比展示</span>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-time">最后3秒</div>
+                        <div class="flow-title">留资引导</div>
+                        <div class="flow-content">
+                            <span>福利强化</span>
+                            <span>行动指令</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="plan-card">
+                    <p><strong>具体应用示例</strong>：</p>
+                    <ul class="plan-list">
+                        <li><strong>前3秒</strong>："小张火锅店用劣质调料，顾客差评不断，生意下滑30%"</li>
+                        <li><strong>中间</strong>：展示饭扫光产品与其他调料的对比、出餐效率提升实测</li>
+                        <li><strong>最后3秒</strong>："私信获取【火锅店调料优化方案】"</li>
+                    </ul>
+                </div>
+
+                <h3 class="plan-subsection-title">6.2 三大内容赛道与具体选题</h3>
+                <p style="color: var(--muted); margin-bottom: 1rem;"><strong>赛道一：成本算账系列（占比50%）</strong> — 目标人群：小型餐饮店老板，核心痛点：人工成本高、厨师难招</p>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题1</span>
+                    </div>
+                    <div class="topic-title">"请个川菜师傅月薪8000，用复合调料每月省5000！"</div>
+                    <div class="topic-content">对比：传统请师傅成本 vs 使用复合调料成本</div>
+                    <div class="topic-cta">私信获取【成本节省方案】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题2</span>
+                    </div>
+                    <div class="topic-title">"一份鱼香肉丝自己炒成本4块，用饭扫光只要2块8"</div>
+                    <div class="topic-content">拆解：原料成本、人工成本、时间成本对比</div>
+                    <div class="topic-cta">点击领取【菜品成本对照表】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题3</span>
+                    </div>
+                    <div class="topic-title">"开川菜馆最大的坑：请师傅！工资高还怕他走"</div>
+                    <div class="topic-content">痛点场景：厨师离职后菜品质量下降的真实案例</div>
+                    <div class="topic-cta">私信获取【无厨师川菜方案】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题4</span>
+                    </div>
+                    <div class="topic-title">"你的餐厅还在请师傅？隔壁店用工包月省了一半"</div>
+                    <div class="topic-content">对比案例：两家店不同模式的成本差异</div>
+                    <div class="topic-cta">获取【降本增效攻略】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题5</span>
+                    </div>
+                    <div class="topic-title">"餐饮老板算账：用复合调料，一年省下6万人工费"</div>
+                    <div class="topic-content">年度成本计算：月薪8000 × 12个月 = 9.6万，用调料包可省60%</div>
+                    <div class="topic-cta">私信领取【年度成本测算表】</div>
+                </div>
+
+                <p style="color: var(--muted); margin: 1rem 0;"><strong>赛道二：口味稳定系列（占比30%）</strong> — 目标人群：连锁餐饮采购、小型餐饮老板，核心痛点：菜品口味不稳定导致顾客流失</p>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题6</span>
+                    </div>
+                    <div class="topic-title">"顾客投诉菜不好吃？不是师傅问题，是调料问题"</div>
+                    <div class="topic-content">对比：同一菜品用不同调料的口味差异实测</div>
+                    <div class="topic-cta">私信获取【口味标准化方案】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题7</span>
+                    </div>
+                    <div class="topic-title">"为什么连锁店味道都一样？秘密就在这个调料包"</div>
+                    <div class="topic-content">揭秘：连锁餐饮如何通过复合调料实现标准化</div>
+                    <div class="topic-cta">点击获取【连锁餐饮调料方案】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题8</span>
+                    </div>
+                    <div class="topic-title">"今天好吃明天不好吃？你的餐厅有这个毛病吗？"</div>
+                    <div class="topic-content">痛点场景：口味不稳定导致的客诉真实案例</div>
+                    <div class="topic-cta">私信领取【口味一致性检测报告】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题9</span>
+                    </div>
+                    <div class="topic-title">"用复合调料炒菜，新手也能做出大厨水平"</div>
+                    <div class="topic-content">实测：厨师小白 vs 老师傅，使用复合调料后出品对比</div>
+                    <div class="topic-cta">获取【新手厨师培训方案】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题10</span>
+                    </div>
+                    <div class="topic-title">"复购率提升14%的秘密：口味标准化"</div>
+                    <div class="topic-content">数据案例：某门店使用复合调料后的复购率变化</div>
+                    <div class="topic-cta">私信获取【复购率提升方案】</div>
+                </div>
+
+                <p style="color: var(--muted); margin: 1rem 0;"><strong>赛道三：出餐效率系列（占比20%）</strong> — 目标人群：外卖店老板、快餐店老板，核心痛点：高峰期出餐慢导致顾客流失</p>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题11</span>
+                    </div>
+                    <div class="topic-title">"高峰期顾客排队？5分钟出餐的秘密在这里"</div>
+                    <div class="topic-content">实测：传统炒菜15分钟 vs 复合调料5分钟</div>
+                    <div class="topic-cta">私信获取【快速出餐方案】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题12</span>
+                    </div>
+                    <div class="topic-title">"外卖爆单的秘密：3分钟出一道招牌菜"</div>
+                    <div class="topic-content">实拍：使用复合调料快速出品的全流程</div>
+                    <div class="topic-cta">点击领取【爆款菜品配方】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题13</span>
+                    </div>
+                    <div class="topic-title">"翻台率提升30%！这家店是怎么做到的？"</div>
+                    <div class="topic-content">案例：某门店使用复合调料后翻台率提升数据</div>
+                    <div class="topic-cta">私信获取【翻台率提升攻略】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题14</span>
+                    </div>
+                    <div class="topic-title">"同样的后厨，他家比我快一倍？原因找到了"</div>
+                    <div class="topic-content">对比：两家店相同菜品的不同出餐时间</div>
+                    <div class="topic-cta">获取【后厨效率优化方案】</div>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <span class="topic-number">选题15</span>
+                    </div>
+                    <div class="topic-title">"外卖店月销8000单，后厨只有2个人"</div>
+                    <div class="topic-content">案例：低成本人工+高效率出餐的成功模式</div>
+                    <div class="topic-cta">私信获取【外卖店运营方案】</div>
+                </div>
+
+                <h3 class="plan-subsection-title">6.3 发布节奏规划</h3>
+                <div class="plan-card">
+                    <p><strong>内容制作节奏</strong>：</p>
+                    <ul class="plan-list">
+                        <li>周一至周五：每天制作<strong>2条</strong>素材（积累素材库）</li>
+                        <li>周六周日：<strong>双休</strong>，不制作新内容</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>发布节奏</strong>：</p>
+                    <ul class="plan-list">
+                        <li>根据素材质量和投流效果，灵活决定每日发布1-2条</li>
+                        <li>月度发布量：约<strong>30-40条</strong></li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>最佳发布时段</strong>（餐饮老板决策时段）：</p>
+                    <ul class="plan-list">
+                        <li>早间：9:00-10:00（采购决策黄金时段）</li>
+                        <li>午间：11:30-12:30（休息时段浏览）</li>
+                        <li>下午：15:00-16:00（采购补充时段）</li>
+                    </ul>
+                    <p style="margin-top: 1rem; color: var(--muted); font-size: 0.85rem;">
+                        注：周一至周五每天制作2条，可以积累素材库，保证内容质量和供应量。周末双休保持工作节奏。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 七、线索广告投流策略 -->
+            <div class="plan-section fade-in" id="section7">
+                <h2 class="plan-section-title">七、线索广告投流策略</h2>
+
+                <h3 class="plan-subsection-title">7.1 投放平台与目标</h3>
+                <div class="plan-card">
+                    <p><strong>平台</strong>：巨量营销后台（线索广告核心平台）</p>
+                    <p><strong>投放目标</strong>：</p>
+                    <ul class="plan-list">
+                        <li>主目标：表单提交（收集联系方式）</li>
+                        <li>辅助目标：私信开口（高意向用户即时沟通）</li>
+                    </ul>
+                </div>
+
+                <h3 class="plan-subsection-title">7.2 定向策略详解</h3>
+                <div class="plan-card">
+                    <p><strong>地域定向</strong>：</p>
+                    <ul class="plan-list">
+                        <li>优先投放：四川省、重庆市、贵州省、湖北省、湖南省</li>
+                        <li>测试扩展：云南省、陕西省、广东省（川菜外地扩张市场）</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>人群定向</strong>：</p>
+                    <ul class="plan-list">
+                        <li>年龄：25-55岁</li>
+                        <li>性别：男性70%，女性30%</li>
+                        <li>兴趣标签：餐饮创业、美食制作、厨师培训、外卖运营、连锁加盟</li>
+                    </ul>
+                </div>
+
+                <h3 class="plan-subsection-title">7.3 出价策略与预算分配</h3>
+                <table class="plan-table">
+                    <tr>
+                        <th>阶段</th>
+                        <th>日预算</th>
+                        <th>出价策略</th>
+                        <th>投放时段</th>
+                    </tr>
+                    <tr>
+                        <td><strong>第1月</strong></td>
+                        <td>预算7,500元</td>
+                        <td>保持CPL 30元水平，熟悉投放模型，分析高转化素材</td>
+                        <td>重点时段：9:00-10:00，15:00-16:00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>第2月</strong></td>
+                        <td>预算9,000元（+20%）</td>
+                        <td>表单出价25-35元，配合线索清洗提升有效率至50%</td>
+                        <td>全时段投放，增加餐饮老板活跃时段权重</td>
+                    </tr>
+                    <tr>
+                        <td><strong>第3月</strong></td>
+                        <td>预算10,500元（+17%）</td>
+                        <td>深度转化出价30-40元，优化成本保持20-30元区间</td>
+                        <td>智能投放+高转化时段加投</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 八、私域承接与转化链路 -->
+            <div class="plan-section fade-in" id="section8">
+                <h2 class="plan-section-title">八、私域承接与转化链路</h2>
+
+                <h3 class="plan-subsection-title">8.1 转化路径设计</h3>
+                <div class="formula-flow conversion-flow">
+                    <div class="flow-step-simple">
+                        <span>抖音曝光</span>
+                    </div>
+                    <div class="flow-arrow-simple">→</div>
+                    <div class="flow-step-simple">
+                        <span>点击广告</span>
+                    </div>
+                    <div class="flow-arrow-simple">→</div>
+                    <div class="flow-step-simple">
+                        <span>填写表单</span>
+                    </div>
+                    <div class="flow-arrow-simple">→</div>
+                    <div class="flow-step-simple">
+                        <span>加企微</span>
+                    </div>
+                    <div class="flow-arrow-simple">→</div>
+                    <div class="flow-step-simple highlight">
+                        <span>电话回访</span>
+                        <small>10分钟内</small>
+                    </div>
+                    <div class="flow-arrow-simple">→</div>
+                    <div class="flow-step-simple">
+                        <span>确认需求</span>
+                    </div>
+                    <div class="flow-arrow-simple">→</div>
+                    <div class="flow-step-simple">
+                        <span>寄送样品</span>
+                    </div>
+                    <div class="flow-arrow-simple">→</div>
+                    <div class="flow-step-simple highlight">
+                        <span>跟进反馈</span>
+                        <small>3天后</small>
+                    </div>
+                    <div class="flow-arrow-simple">→</div>
+                    <div class="flow-step-simple">
+                        <span>报价沟通</span>
+                    </div>
+                    <div class="flow-arrow-simple">→</div>
+                    <div class="flow-step-simple success">
+                        <span>成交</span>
+                    </div>
+                </div>
+
+                <h3 class="plan-subsection-title">8.2 响应时效要求</h3>
+                <div class="plan-card">
+                    <ul class="plan-list">
+                        <li>表单提交后：<span class="plan-highlight">10分钟内</span>电话回访</li>
+                        <li>私信咨询后：<span class="plan-highlight">3分钟内</span>人工响应</li>
+                        <li>样品寄送后：第3天、第7天、第15天三次跟进</li>
+                    </ul>
+                </div>
+
+                <h3 class="plan-subsection-title">8.3 线索分级管理</h3>
+                <table class="plan-table">
+                    <tr>
+                        <th>意向等级</th>
+                        <th>判定标准</th>
+                        <th>处理方式</th>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: var(--love);">A级（高意向）</strong></td>
+                        <td>明确表达采购需求，提供门店名称和采购量级</td>
+                        <td>优先跟进，当天寄送样品</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: var(--pine);">B级（中等意向）</strong></td>
+                        <td>有采购想法但不确定时间</td>
+                        <td>定期跟进，发送案例资料</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: var(--muted);">C级（低意向）</strong></td>
+                        <td>只是了解行情，暂无采购计划</td>
+                        <td>进入培育池，每月触达1次</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: var(--subtle);">D级（无效线索）</strong></td>
+                        <td>电话空号/拒接，C端消费者误填</td>
+                        <td>标记无效，回传平台优化定向</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 九、数据监测与迭代机制 -->
+            <div class="plan-section fade-in" id="section9">
+                <h2 class="plan-section-title">九、数据监测与迭代机制</h2>
+
+                <h3 class="plan-subsection-title">9.1 核心指标看板</h3>
+                <table class="plan-table">
+                    <tr>
+                        <th>指标层级</th>
+                        <th>核心指标</th>
+                        <th>健康值</th>
+                        <th>计算公式</th>
+                    </tr>
+                    <tr>
+                        <td><strong>流量层</strong></td>
+                        <td>CTR（点击率）</td>
+                        <td>> 1.5%</td>
+                        <td>点击量 ÷ 展示量 × 100%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>线索层</strong></td>
+                        <td>CPL（线索成本）</td>
+                        <td>20-40元</td>
+                        <td>广告消耗 ÷ 线索数量</td>
+                    </tr>
+                    <tr>
+                        <td><strong>转化层</strong></td>
+                        <td>样品申领率</td>
+                        <td>> 30%</td>
+                        <td>申领样品数 ÷ 有效线索数 × 100%</td>
+                    </tr>
+                </table>
+
+                <h3 class="plan-subsection-title">9.2 周迭代机制</h3>
+                <table class="plan-table">
+                    <tr>
+                        <th>周次</th>
+                        <th>复盘内容</th>
+                        <th>优化动作</th>
+                    </tr>
+                    <tr>
+                        <td>周一</td>
+                        <td>上周数据汇总分析</td>
+                        <td>淘汰CTR<1%素材</td>
+                    </tr>
+                    <tr>
+                        <td>周二</td>
+                        <td>高转化选题扩展</td>
+                        <td>制作新素材3条</td>
+                    </tr>
+                    <tr>
+                        <td>周三</td>
+                        <td>新素材测试数据</td>
+                        <td>调整定向参数</td>
+                    </tr>
+                    <tr>
+                        <td>周四</td>
+                        <td>线索质量反馈</td>
+                        <td>销售团队反馈汇总</td>
+                    </tr>
+                    <tr>
+                        <td>周五</td>
+                        <td>本周投放复盘</td>
+                        <td>制定下周计划</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 十、产出预估 -->
+            <div class="plan-section fade-in" id="section10">
+                <h2 class="plan-section-title">十、产出预估</h2>
+
+                <!-- 投入产出对比突出 -->
+                <div class="key-metrics">
+                    <div class="metric-card">
+                        <div class="metric-label">💰 广告投入</div>
+                        <div class="metric-value">2.7</div>
+                        <div class="metric-unit">万元</div>
+                    </div>
+                    <div class="metric-card highlight">
+                        <div class="metric-label">👥 成交客户</div>
+                        <div class="metric-value">21</div>
+                        <div class="metric-unit">家</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">💵 预估成交额</div>
+                        <div class="metric-value">10.5</div>
+                        <div class="metric-unit">万元</div>
+                    </div>
+                </div>
+
+                <h3 class="plan-subsection-title">10.1 成交转化明细</h3>
+                <div class="formula-box">
+                    <div class="formula-title">📊 客单价说明</div>
+                    <div class="formula-step">首单平均金额 = <strong>5000元</strong>（中小餐饮门店首批采购）</div>
+                    <div class="formula-note">说明：小型餐饮店首批采购通常在3000-8000元，本方案采用中间值5000元</div>
+                </div>
+                <table class="plan-table">
+                    <tr>
+                        <th>阶段</th>
+                        <th>有效线索</th>
+                        <th>转化率</th>
+                        <th>成交客户</th>
+                        <th>成交额</th>
+                    </tr>
+                    <tr>
+                        <td>第1月</td>
+                        <td>100个</td>
+                        <td>5%</td>
+                        <td>5家</td>
+                        <td>2.5万</td>
+                    </tr>
+                    <tr>
+                        <td>第2月</td>
+                        <td>126个</td>
+                        <td>6%</td>
+                        <td>7-8家</td>
+                        <td>3.5-4万</td>
+                    </tr>
+                    <tr>
+                        <td>第3月</td>
+                        <td>158个</td>
+                        <td>7%</td>
+                        <td>11家</td>
+                        <td>5.5万</td>
+                    </tr>
+                    <tr>
+                        <td><strong>合计</strong></td>
+                        <td><strong>384个</strong></td>
+                        <td>-</td>
+                        <td><strong>约21家</strong></td>
+                        <td><strong style="color: var(--love);">约10.5万</strong></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 十一、风险预判与应对策略 -->
+            <div class="plan-section fade-in" id="section11">
+                <h2 class="plan-section-title">十一、风险预判与应对策略</h2>
+                <table class="plan-table">
+                    <tr>
+                        <th>风险点</th>
+                        <th>预判场景</th>
+                        <th>应对策略</th>
+                    </tr>
+                    <tr>
+                        <td><strong>线索量达不到300</strong></td>
+                        <td>新素材效果不佳，CPL上升</td>
+                        <td>复用已验证的高CTR素材，增加高频时段投放预算</td>
+                    </tr>
+                    <tr>
+                        <td><strong>线索质量差</strong></td>
+                        <td>C端消费者误填，有效率低于30%</td>
+                        <td>表单增加"门店名称""采购量级"必填字段</td>
+                    </tr>
+                    <tr>
+                        <td><strong>成本超40元</strong></td>
+                        <td>放量期竞争加剧，出价上涨</td>
+                        <td>收缩定向范围，重点投放已转化人群的相似人群包</td>
+                    </tr>
+                    <tr>
+                        <td><strong>样品寄送无转化</strong></td>
+                        <td>客户收到样品但不回复</td>
+                        <td>建立3-7-15天跟进机制，样品附赠"首单满减券"</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 十二、结合饭扫光品牌特点 -->
+            <div class="plan-section fade-in" id="section12">
+                <h2 class="plan-section-title">十二、结合饭扫光品牌特点</h2>
+                <div class="plan-card">
+                    <p style="margin-bottom: 1rem;">本方案紧扣饭扫光集团的核心优势：</p>
+                    <ul class="plan-list">
+                        <li><strong>三大生产基地</strong>：郫都区、梓潼、东坡区（总占地400余亩，年产能10万吨）</li>
+                        <li><strong>资质认证</strong>：ISO9001、HACCP双认证，40余项发明专利</li>
+                        <li><strong>产品矩阵</strong>：川菜调料包、火锅底料、佐餐小菜三大系列，覆盖餐饮全场景</li>
+                        <li><strong>定制能力</strong>：餐饮定制研发团队，支持口味调整、规格定制</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 十三、方案结语 -->
+            <div class="plan-section fade-in" id="section13">
+                <h2 class="plan-section-title">十三、方案结语</h2>
+                <div class="plan-card">
+                    <p style="color: var(--muted); line-height: 1.8;">
+                        本方案以"精准内容 + 精准流量 + 精准承接"的组合方式，在用户整个采购决策周期内逐步建立信任、放大兴趣、刺激转化，实现从内容触达到客户留资的完整闭环。
+                    </p>
+                    <ul class="plan-list" style="margin-top: 1rem;">
+                        <li><strong>选题直击痛点</strong>：每条内容都有明确的痛点场景和解决方案</li>
+                        <li><strong>数据驱动决策</strong>：所有目标设定基于计算推导，而非凭空估算</li>
+                        <li><strong>成本可控可行</strong>：CPL目标与公司现有水平持平</li>
+                        <li><strong>转化闭环完整</strong>：从线索获取到成交签约，全链路设计清晰</li>
+                    </ul>
+                </div>
+
+                <div class="plan-footer">
+                    <p>提交人：黄苏梦 | 联系方式：19140532951 / suiic@qq.com</p>
+                    <p>日期：2026年5月27日</p>
+                </div>
+            </div>
+        `;
+
+        // 加载策划案内容
+        document.getElementById('plan-content').innerHTML = planHTML;
+
+        // 目录导航控制
+        const sidebar = document.getElementById('planSidebar');
+        const sidebarItems = document.querySelectorAll('.plan-nav-menu li');
+
+        // 点击目录项跳转
+        sidebarItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const offset = 70; // 导航栏高度 + 间距
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    sidebarItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // 监听滚动，更新目录active状态
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.plan-section[id]');
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    currentSection = section.id;
+                }
+            });
+
+            if (currentSection) {
+                sidebarItems.forEach(item => {
+                    if (item.getAttribute('data-target') === currentSection) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // ========== 图表渲染函数 ==========
+        function renderCharts() {
+            const chartFont = {
+                family: "'Inter', sans-serif",
+                size: 12
+            };
+            const chartColors = {
+                love: '#b4637a',
+                pine: '#286983',
+                gold: '#ea9d34',
+                muted: '#9893a5',
+                overlay: '#f2e9de'
+            };
+
+            // 1. 线索增长折线图
+            const leadGrowthCtx = document.getElementById('leadGrowthChart');
+            if (leadGrowthCtx) {
+                new Chart(leadGrowthCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['当前', '第1月', '第2月', '第3月'],
+                        datasets: [{
+                            label: '客资量',
+                            data: [180, 250, 300, 350],
+                            borderColor: chartColors.love,
+                            backgroundColor: 'rgba(180, 99, 122, 0.1)',
+                            tension: 0.3,
+                            fill: true,
+                            pointBackgroundColor: chartColors.love,
+                            pointRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            title: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                min: 150,
+                                max: 400,
+                                grid: { color: chartColors.overlay },
+                                ticks: { font: chartFont }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { font: chartFont }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 2. CPL成本柱状图
+            const cplCtx = document.getElementById('cplChart');
+            if (cplCtx) {
+                new Chart(cplCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['最低目标', '当前水平', '最高目标'],
+                        datasets: [{
+                            label: 'CPL（元）',
+                            data: [20, 30, 40],
+                            backgroundColor: [
+                                'rgba(40, 105, 131, 0.6)',
+                                'rgba(180, 99, 122, 0.6)',
+                                'rgba(234, 157, 52, 0.6)'
+                            ],
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 50,
+                                grid: { color: chartColors.overlay },
+                                ticks: { font: chartFont }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { font: chartFont }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 3. 预算与线索量双轴图
+            const budgetCtx = document.getElementById('budgetChart');
+            if (budgetCtx) {
+                new Chart(budgetCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['第1月', '第2月', '第3月'],
+                        datasets: [
+                            {
+                                label: '预算（元）',
+                                data: [7500, 9000, 10500],
+                                backgroundColor: 'rgba(180, 99, 122, 0.6)',
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: '客资量（个）',
+                                data: [250, 300, 350],
+                                backgroundColor: 'rgba(40, 105, 131, 0.6)',
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: { font: chartFont }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                position: 'left',
+                                title: { display: true, text: '预算（元）', font: chartFont },
+                                max: 12000,
+                                grid: { color: chartColors.overlay },
+                                ticks: { font: chartFont }
+                            },
+                            y1: {
+                                type: 'linear',
+                                position: 'right',
+                                title: { display: true, text: '客资量（个）', font: chartFont },
+                                max: 400,
+                                grid: { display: false },
+                                ticks: { font: chartFont }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { font: chartFont }
+                            }
+                        }
+                    }
+                });
+            }
         }
 
         document.addEventListener('DOMContentLoaded', init);
